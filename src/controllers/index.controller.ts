@@ -10,7 +10,7 @@ export class IndexController {
 
   private async index(request: Request, response: Response) {
     response.json({
-      users: '/users'
+      products: '/products'
     });
   }
 

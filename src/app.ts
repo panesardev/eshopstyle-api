@@ -1,9 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
-import { UsersController } from './controllers/users.controller';
 import { IndexController } from './controllers/index.controller';
-import { AppDataSource } from './database';
+import { ProductsController } from './controllers/products.controller';
 
 require('dotenv').config();
 
@@ -27,19 +26,14 @@ export class App {
     this.express.use(cors());
     this.express.use(express.json());
 
-    this.initializeDatabase();
     this.useControllers();
 
     return this.express;
   }
 
-  async initializeDatabase() {
-    await AppDataSource.initialize().catch(e => console.log(e));
-  }
-
   private useControllers() {
     this.express.use('/', new IndexController().getRouter());
-    this.express.use('/users', new UsersController().getRouter());
+    this.express.use('/products', new ProductsController().getRouter());
   }
 
 }
