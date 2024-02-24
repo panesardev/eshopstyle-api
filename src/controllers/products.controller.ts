@@ -1,8 +1,5 @@
 import { Request, Response, Router } from "express";
-import axios from 'axios';
-import { Product, ProductResponse } from "../types/product";
-
-const URL = 'https://dummyjson.com/products';
+import { PRODUCTS, CATEGORIES } from "../types/product";
 
 export class ProductsController {
   private router = Router();
@@ -16,25 +13,23 @@ export class ProductsController {
   }
 
   private async findAll(request: Request, response: Response) {
-    const result = await axios.get<ProductResponse>(URL);
-    response.json(result.data.products);
+    response.json(PRODUCTS);
   }
 
   private async find(request: Request, response: Response) {
-    const id = Number(request.params['id']);
-    const result = await axios.get<Product>(`${URL}/${id}`);
-    response.json(result.data);
+    const id = request.params['id'];
+    const product = PRODUCTS.find(p => p.id === id);
+    response.json(product);
   }
 
   private async findCategories(request: Request, response: Response) {
-    const result = await axios.get<string[]>(`${URL}/categories`);
-    response.json(result.data);
+    response.json(CATEGORIES);
   }
 
   private async findByCategory(request: Request, response: Response) {
-    const category = String(request.params['category']);
-    const result = await axios.get<ProductResponse>(`${URL}/category/${category}`);
-    response.json(result.data.products);
+    const category = Number(request.params['category']);
+    const products = PRODUCTS.filter(p => p.categoryId === category);
+    response.json(products);
   }
 
 } 
