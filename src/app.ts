@@ -11,9 +11,15 @@ export class App {
   private static instance: App;
   private express = express();
 
-  public static getInstance(): App {
+  static getInstance(): App {
     if (!App.instance) App.instance = new App();
     return App.instance;
+  }
+
+  private useControllers() {
+    this.express.use('/', new IndexController().getRouter());
+    this.express.use('/products', new ProductsController().getRouter());
+    this.express.use('/categories', new CategoriesController().getRouter());
   }
 
   run(port: number) {
@@ -30,12 +36,6 @@ export class App {
     this.useControllers();
 
     return this.express;
-  }
-
-  private useControllers() {
-    this.express.use('/', new IndexController().getRouter());
-    this.express.use('/products', new ProductsController().getRouter());
-    this.express.use('/categories', new CategoriesController().getRouter());
   }
 
 }

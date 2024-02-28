@@ -9,10 +9,7 @@ export class IndexController {
   }
 
   private async index(request: Request, response: Response) {
-    response.json({
-      products: '/products',
-      categories: '/categories'
-    });
+    response.send('EShopStyle serverless api');
   }
 
 }
