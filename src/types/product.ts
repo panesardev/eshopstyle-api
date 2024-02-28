@@ -175,7 +175,6 @@ export const PRODUCTS: Product[] = [
   }
 ];
 
-
 export const CATEGORIES: Category[] = [
   { id: 1, name: 'all' },
   { id: 2, name: 'women' },
