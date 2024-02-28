@@ -18,6 +18,8 @@ export class ProductsController {
 
   private async find(request: Request, response: Response) {
     const id = request.params['id'];
+    console.log(id);
+    
     const product = PRODUCTS.find(p => p.id === id);
     response.json(product);
   }
