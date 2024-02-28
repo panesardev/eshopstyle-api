@@ -7,8 +7,6 @@ export class ProductsController {
   getRouter() {
     this.router.get('/', this.findAll);
     this.router.get('/:id', this.find);
-    this.router.get('/categories', this.findCategories);
-    this.router.get('/category/:category', this.findByCategory);
     return this.router;
   }
 
@@ -17,21 +15,11 @@ export class ProductsController {
   }
 
   private async find(request: Request, response: Response) {
-    const id = request.params['id'];
+    const id = request.params.id;
     console.log(id);
     
     const product = PRODUCTS.find(p => p.id === id);
     response.json(product);
-  }
-
-  private async findCategories(request: Request, response: Response) {
-    response.json(CATEGORIES);
-  }
-
-  private async findByCategory(request: Request, response: Response) {
-    const category = Number(request.params['category']);
-    const products = PRODUCTS.filter(p => p.categoryId === category);
-    response.json(products);
   }
 
 } 
