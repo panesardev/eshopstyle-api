@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { PRODUCTS, CATEGORIES } from "../types/product";
+import { PRODUCTS } from "../types/product";
 
 export class ProductsController {
   private router = Router();
@@ -16,8 +16,6 @@ export class ProductsController {
 
   private async find(request: Request, response: Response) {
     const id = request.params.id;
-    console.log(id);
-    
     const product = PRODUCTS.find(p => p.id === id);
     response.json(product);
   }

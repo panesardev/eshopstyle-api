@@ -6,7 +6,7 @@ export class CategoriesController {
 
   getRouter() {
     this.router.get('/', this.findAll);
-    this.router.get('/:category', this.findByCategory);
+    this.router.get('/:id', this.findByCategory);
     return this.router;
   }
 
@@ -15,8 +15,8 @@ export class CategoriesController {
   }
 
   private async findByCategory(request: Request, response: Response) {
-    const category = Number(request.params['category']);
-    const products = PRODUCTS.filter(p => p.categoryId === category);
+    const id = Number(request.params.id);
+    const products = PRODUCTS.filter(p => p.categoryId === id);
     response.json(products);
   }
 
