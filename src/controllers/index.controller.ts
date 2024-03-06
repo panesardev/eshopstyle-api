@@ -9,7 +9,9 @@ export class IndexController {
   }
 
   private async index(request: Request, response: Response) {
-    response.send('EShopStyle serverless api');
+    response.json({
+      visit: 'https://eshopstyle.vercel.app',
+    });
   }
 
 }

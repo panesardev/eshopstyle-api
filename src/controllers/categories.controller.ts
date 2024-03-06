@@ -1,22 +1,17 @@
 import { Request, Response, Router } from "express";
-import { CATEGORIES, PRODUCTS } from "../types/product";
+import { Category, PRODUCTS } from "../types/product";
 
 export class CategoriesController {
   private router = Router();
 
   getRouter() {
-    this.router.get('/', this.findAll);
-    this.router.get('/:id', this.findByCategory);
+    this.router.get('/:category', this.findByCategory);
     return this.router;
   }
 
-  private async findAll(request: Request, response: Response) {
-    response.json(CATEGORIES);
-  }
-
   private async findByCategory(request: Request, response: Response) {
-    const id = Number(request.params.id);
-    const products = PRODUCTS.filter(p => p.categoryId === id);
+    const category = request.params.category as Category;
+    const products = PRODUCTS.filter(product => product.category === category);
     response.json(products);
   }
 
