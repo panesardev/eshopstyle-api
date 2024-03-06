@@ -3,7 +3,6 @@ import cors from 'cors';
 import compression from 'compression';
 import { IndexController } from './controllers/index.controller';
 import { ProductsController } from './controllers/products.controller';
-import { CategoriesController } from './controllers/categories.controller';
 
 require('dotenv').config();
 
@@ -16,10 +15,9 @@ export class App {
     return App.instance;
   }
 
-  private useControllers() {
+  private setControllers() {
     this.express.use('/', new IndexController().getRouter());
     this.express.use('/products', new ProductsController().getRouter());
-    this.express.use('/categories', new CategoriesController().getRouter());
   }
 
   run(port: number) {
@@ -33,7 +31,7 @@ export class App {
     this.express.use(cors());
     this.express.use(express.json());
 
-    this.useControllers();
+    this.setControllers();
 
     return this.express;
   }

@@ -171,11 +171,3 @@ export const PRODUCTS: Product[] = [
     photoURL: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg"
   }
 ];
-
-// export const CATEGORIES: Category[] = [
-//   { id: 1, name: 'all' },
-//   { id: 2, name: 'women' },
-//   { id: 3, name: 'men' },
-//   { id: 4, name: 'tech' },
-//   { id: 5, name: 'jewelry' },
-// ];

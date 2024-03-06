@@ -19,11 +19,4 @@ export class ProductsController {
     const product = PRODUCTS.find(p => p.id === id);
     response.json(product);
   }
-
-  private async findByCategory(request: Request, response: Response) {
-    const category = request.params.category as Category;
-    const products = PRODUCTS.filter(product => product.category === category);
-    response.json(products);
-  }
-
 } 
