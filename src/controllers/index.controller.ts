@@ -1,17 +1,16 @@
 import { Request, Response, Router } from "express";
 
 export class IndexController {
-  private router = Router();
+  readonly router = Router();
 
-  getRouter() {
+  constructor() {
     this.router.get('/', this.index);
-    return this.router;
   }
 
-  private async index(request: Request, response: Response) {
-    response.json({
+  async index(request: Request, response: Response) {
+    const message = {
       visit: 'https://eshopstyle.vercel.app',
-    });
+    };
+    response.json(message);
   }
-
 }

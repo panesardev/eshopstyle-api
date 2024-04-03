@@ -16,8 +16,8 @@ export class App {
   }
 
   private setControllers() {
-    this.express.use('/', new IndexController().getRouter());
-    this.express.use('/products', new ProductsController().getRouter());
+    this.express.use('/', new IndexController().router);
+    this.express.use('/products', new ProductsController().router);
   }
 
   run(port: number) {

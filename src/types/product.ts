@@ -9,7 +9,7 @@ export interface Product {
 
 export type Category = 'MEN' | 'WOMEN' | 'ELECTRONICS' | 'JEWELRY';
 
-export const PRODUCTS: Product[] = [
+export const products: Product[] = [
   {
     id: "fa5a23d9-cb39-433b-9a47-9d120e328aee",
     category: 'MEN',
