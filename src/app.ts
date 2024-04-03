@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
-import { IndexController } from './controllers/index.controller';
 import { ProductsController } from './controllers/products.controller';
 
 require('dotenv').config();
@@ -16,7 +15,6 @@ export class App {
   }
 
   private setControllers() {
-    this.express.use('/', new IndexController().router);
     this.express.use('/products', new ProductsController().router);
   }
 
