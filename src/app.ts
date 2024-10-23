@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
-import { ProductsController } from './controllers/products.controller';
+import { ProductRouter } from './domains/products/product.router';
+import { CategoryRouter } from './domains/categories/category.router';
 
 require('dotenv').config();
 
@@ -15,13 +16,12 @@ export class App {
   }
 
   private setControllers() {
-    this.express.use('/products', new ProductsController().router);
+    this.express.use('/products', ProductRouter.router);
+    this.express.use('/categories', CategoryRouter.router);
   }
 
   run(port: number) {
-    this.getExpress().listen(port, () =>
-      console.log(`Express running at PORT:${port}`),
-    );
+    this.getExpress().listen(port, () => console.log(`Express running at PORT:${port}`));
   }
 
   getExpress() {
